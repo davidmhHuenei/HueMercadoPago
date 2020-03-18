@@ -1,4 +1,4 @@
-package com-huenei-plugins-mercadopago;
+package com.huenei.plugins.mercadopago;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;

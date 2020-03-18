@@ -9,11 +9,11 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="HueMercadoPago">
-                <param name="android-package" value="com-huenei-plugins-mercadopago.HueMercadoPago" />
+                <param name="android-package" value="com.huenei.plugins.mercadopago.HueMercadoPago" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
-        <source-file src="src/android/HueMercadoPago.java" target-dir="src/com-huenei-plugins-mercadopago/HueMercadoPago" />
+        <source-file src="src/android/HueMercadoPago.java" target-dir="src/com/huenei/plugins/mercadopago/HueMercadoPago" />
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
