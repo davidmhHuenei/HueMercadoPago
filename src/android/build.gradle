@@ -1,0 +1,10 @@
+android {
+    defaultConfig {
+        multiDexEnabled true
+    }
+}
+
+dependencies {
+	implementation 'com.mercadopago.android.px:checkout:4.+'
+	implementation 'androidx.multidex:multidex:2.0.1'
+}
