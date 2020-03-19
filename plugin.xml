@@ -14,10 +14,7 @@
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="src/android/HueMercadoPago.java" target-dir="src/com/huenei/plugins/mercadopago/HueMercadoPago" />
-        <framework src="com.mercadopago.android.px:checkout:4.+" />
-		<framework src="com.android.support:appcompat-v7:27.0.1" />
-
-
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
