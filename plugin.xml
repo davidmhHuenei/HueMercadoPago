@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>HueMercadoPago</name>
     <js-module name="HueMercadoPago" src="www/HueMercadoPago.js">
-        <clobbers target="cordova.plugins.HueMercadoPago" />
+        <clobbers target="HueMercadoPago" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
