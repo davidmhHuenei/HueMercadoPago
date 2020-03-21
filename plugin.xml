@@ -22,6 +22,9 @@
                 <param name="ios-package" value="HueMercadoPago" />
             </feature>
         </config-file>
-        <source-file src="src/ios/HueMercadoPago.m" />
+        <source-file src="src/ios/HueMercadoPago.swift" />
+        <!-- Add in the swift-support plugin by default -->
+        <framework src="MercadoPagoSDK" type="podspec" spec="~> 5.6"/>
+        <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
     </platform>
 </plugin>
