@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>encoding='utf-8'?
 <plugin id="com-huenei-plugins-mercadopago" version="0.0.1"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -24,7 +24,14 @@
         </config-file>
         <source-file src="src/ios/HueMercadoPago.swift" />
         <!-- Add in the swift-support plugin by default -->
-        <framework src="MercadoPagoSDK" type="podspec" spec="~> 5.6"/>
         <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="MercadoPagoSDK" spec="~> 5.6" />
+            </pods>
+        </podspec>
     </platform>
 </plugin>
