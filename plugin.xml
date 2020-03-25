@@ -33,7 +33,7 @@
                 <source url="https://cdn.cocoapods.org/"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="MercadoPagoSDK" spec="~> 3.2" />
+                <pod name="MercadoPagoSDK" spec="~> 4.32" />
             </pods>
         </podspec>
         <engines>
