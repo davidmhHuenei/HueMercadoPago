@@ -25,13 +25,9 @@
         <source-file src="src/ios/HueMercadoPago.swift" />
         <!-- Add in the swift-support plugin by default -->
         <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
-        <podspec>
-            <config>
-                <source url="https://github.com/CocoaPods/Specs.git"/>
-            </config>
-            <pods use-frameworks="true">
-                <pod name="MercadoPagoSDK" spec="~> 1.8.4" />
-            </pods>
-        </podspec>
+        <!--
+        <framework src="src/ios/MercadoPagoSDK.framework" custom="true" embed="true"/>
+        -->
+        <framework src="MercadoPagoSDK" type="podspec" spec="~> 2.2.4" />
     </platform>
 </plugin>
