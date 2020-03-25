@@ -29,5 +29,10 @@
         <framework src="src/ios/MercadoPagoSDK.framework" custom="true" embed="true"/>
         -->
         <framework src="MercadoPagoSDK" type="podspec" spec="~> 2.2.4" />
+        <engines>
+            <engine name="cordova" version=">=7.0.0" />
+            <engine name="cordova-android" version=">=6.3.0" />
+            <engine name="cordova-ios" version=">=4.4.0" />
+        </engines>
     </platform>
 </plugin>
