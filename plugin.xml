@@ -30,7 +30,7 @@
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="MercadoPagoSDK" spec="~> 5.6" />
+                <pod name="MercadoPagoSDK" spec="~> 1.8.4" />
             </pods>
         </podspec>
     </platform>
