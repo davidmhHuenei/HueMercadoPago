@@ -30,8 +30,7 @@
         -->
         <podspec>
             <config>
-                <source url="https://github.com/brightcove/BrightcoveSpecs.git" />
-                <source url="https://github.com/CocoaPods/Specs.git"/>
+                <source url="https://cdn.cocoapods.org/"/>
             </config>
             <pods use-frameworks="true">
                 <pod name="MercadoPagoSDK" spec="~> 3.2" />
