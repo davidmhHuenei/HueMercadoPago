@@ -17,7 +17,6 @@
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">
-        <resource-file src="src/ios/MyStoryboard.storyboard"/>
         <config-file parent="/*" target="config.xml">
             <feature name="HueMercadoPago">
                 <param name="ios-package" value="HueMercadoPago" />
