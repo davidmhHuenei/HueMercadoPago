@@ -8,8 +8,8 @@ import UIKit
 
     var command: CDVInvokedUrlCommand?
 
-    @objc(coolMethod:) // Declare your function name.
-    func coolMethod(command: CDVInvokedUrlCommand) { // write the function code.
+    @objc(realizarPago:) // Declare your function name.
+    func realizarPago(command: CDVInvokedUrlCommand) { // write the function code.
         /* 
         * Always assume that the plugin will fail.
         * Even if in this example, it can't.
