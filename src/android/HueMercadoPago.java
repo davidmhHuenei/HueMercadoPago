@@ -27,15 +27,16 @@ public class HueMercadoPago extends CordovaPlugin {
         cordova.setActivityResultCallback(this);
 
         if (action.equals("realizarPago")) {
-            String preferenceId = args.getString(0);
-            this.realizarPago(preferenceId);
+            String publicKey = args.getString(0);
+            String preferenceId = args.getString(2);
+            this.realizarPago(publicKey, preferenceId);
             return true;
         }
         return false;
     }
 
-    private void realizarPago(String preferenceId) {
-        new MercadoPagoCheckout.Builder("TEST-c98a211b-42d5-45a3-a186-e87606d62c0a", preferenceId).build()
+    private void realizarPago(String publicKey, String preferenceId) {
+        new MercadoPagoCheckout.Builder(publicKey, preferenceId).build()
                 .startPayment(this.cordova.getActivity(), REQUEST_CODE);
     }
 

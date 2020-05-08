@@ -19,16 +19,16 @@ import UIKit
         // Set the plugin result to succeed.
         //pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "The plugin succeeded");
         // Send the function result back to Cordova.
-
-        let preferenceId = command.arguments[0] as! String
+        let publicKey = command.arguments[0] as! String
+        let preferenceId = command.arguments[2] as! String
         self.command = command;
-        self.runMercadoPagoCheckoutWithLifecycle(preferenceId: preferenceId)
+        self.runMercadoPagoCheckoutWithLifecycle(publicKey: publicKey, preferenceId: preferenceId)
     }
 
 
-    func runMercadoPagoCheckoutWithLifecycle(preferenceId: String) {
+    func runMercadoPagoCheckoutWithLifecycle(publicKey: String, preferenceId: String) {
         // 1) Create Builder with your publicKey and preferenceId.
-        let builder = MercadoPagoCheckoutBuilder(publicKey: "TEST-c98a211b-42d5-45a3-a186-e87606d62c0a", 
+        let builder = MercadoPagoCheckoutBuilder(publicKey: publicKey, 
         preferenceId: preferenceId).setLanguage("es")
 
         // 2) Create Checkout reference
