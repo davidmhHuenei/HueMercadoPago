@@ -20,7 +20,7 @@ import UIKit
         //pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "The plugin succeeded");
         // Send the function result back to Cordova.
         let publicKey = command.arguments[0] as! String
-        let preferenceId = command.arguments[2] as! String
+        let preferenceId = command.arguments[1] as! String
         self.command = command;
         self.runMercadoPagoCheckoutWithLifecycle(publicKey: publicKey, preferenceId: preferenceId)
     }

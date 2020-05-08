@@ -28,7 +28,7 @@ public class HueMercadoPago extends CordovaPlugin {
 
         if (action.equals("realizarPago")) {
             String publicKey = args.getString(0);
-            String preferenceId = args.getString(2);
+            String preferenceId = args.getString(1);
             this.realizarPago(publicKey, preferenceId);
             return true;
         }
