@@ -52,7 +52,10 @@ extension HueMercadoPago: PXLifeCycleProtocol {
         return ({ (_ payment: PXResult?) in
             let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_OK,
-                messageAs: payment as? [AnyHashable : Any]
+                messageAs: [
+                    "paymentId": payment?.getPaymentId() ?? "",
+                    "status": payment?.getStatus() ?? ""
+                ] as [AnyHashable: Any]
             )
             self.commandDelegate!.send(pluginResult, callbackId: self.command?.callbackId);
         })

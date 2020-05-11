@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
-
+import java.io.Serializable;
 import com.google.gson.Gson;
 import com.mercadopago.android.px.core.MercadoPagoCheckout;
 import com.mercadopago.android.px.model.Payment;
@@ -21,6 +21,24 @@ import okhttp3.*;
 public class HueMercadoPago extends CordovaPlugin {
     private static final int REQUEST_CODE = 8091;
     private CallbackContext callbackContext;
+    private class MercadoPagoResponse implements Serializable {
+        private String status;
+        private Long paymentId;
+
+        public void setStatus(String status){
+            this.status = status;
+        }
+        public String getStatus(){
+            return this.status;
+        }
+
+        public void setPaymentId(Long id){
+            this.paymentId = id;
+        }
+        public Long getPaymentId(){
+            return this.paymentId;
+        }
+    }
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
@@ -46,8 +64,11 @@ public class HueMercadoPago extends CordovaPlugin {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == MercadoPagoCheckout.PAYMENT_RESULT_CODE) {
                 final Payment payment = (Payment) data.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT);
-                try{
-                    final PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(new Gson().toJson(payment)));
+                try{                    
+                    MercadoPagoResponse mpResponse = new MercadoPagoResponse();
+                    mpResponse.setPaymentId = payment.getPaymentId();
+                    mpResponse.setStatus = payment.getStatus();
+                    final PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(new Gson().toJson(mpResponse)));
                     callbackContext.sendPluginResult(result);
                 }catch(Exception e){
                     e.printStackTrace();
