@@ -1,6 +1,6 @@
 
 src/android/.settings/org.eclipse.buildship.core.prefs
 src/android/.project
-src/android/.gradle/6.0/gc.properties
-src/android/.gradle/6.0/fileHashes/fileHashes.lock
-src/android/.gradle/6.0/fileChanges/last-build.bin
+src/android/.gradle/
+*/.DS_Store
+**/.DS_Store

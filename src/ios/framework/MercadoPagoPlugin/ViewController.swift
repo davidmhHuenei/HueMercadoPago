@@ -57,7 +57,7 @@ extension UIViewController: PXLifeCycleProtocol {
     public func finishCheckout() -> ((_ payment: PXResult?) -> Void)? {
         self.dismiss(animated: false)
         return ({ (_ payment: PXResult?) in
-            print(payment?.getStatus() ?? "")
+            print(payment as? [AnyHashable : Any])
         })
     }
     
