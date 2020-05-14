@@ -66,8 +66,8 @@ public class HueMercadoPago extends CordovaPlugin {
                 final Payment payment = (Payment) data.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT);
                 try{                    
                     MercadoPagoResponse mpResponse = new MercadoPagoResponse();
-                    mpResponse.setPaymentId = payment.getPaymentId();
-                    mpResponse.setStatus = payment.getStatus();
+                    mpResponse.setPaymentId(payment.getPaymentId());
+                    mpResponse.setStatus(payment.getStatus());
                     final PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(new Gson().toJson(mpResponse)));
                     callbackContext.sendPluginResult(result);
                 }catch(Exception e){
