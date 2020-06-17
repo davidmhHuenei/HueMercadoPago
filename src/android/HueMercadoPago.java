@@ -79,7 +79,7 @@ public class HueMercadoPago extends CordovaPlugin {
                     final MercadoPagoError mercadoPagoError = (MercadoPagoError) data.getSerializableExtra(MercadoPagoCheckout.EXTRA_ERROR);
                     callbackContext.error(mercadoPagoError.getMessage());
                 } else {
-                    callbackContext.error("Canceled");
+                    callbackContext.error("Cancelled");
                 }
             }
         }

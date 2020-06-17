@@ -64,17 +64,17 @@ extension HueMercadoPago: PXLifeCycleProtocol {
     func cancelCheckout() -> (() -> Void)? {        
         let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_OK,
-                messageAs: "Canceled"
+                messageAs: "Cancelled"
             )
         self.commandDelegate!.send(pluginResult, callbackId: self.command?.callbackId);
         self.viewController.dismiss(animated: false)
         return nil
     }
-
+/*
     func changePaymentMethodTapped() -> (() -> Void)? {
         return { () in
             print("px - changePaymentMethodTapped")
         }
     }
-
+*/
 }
