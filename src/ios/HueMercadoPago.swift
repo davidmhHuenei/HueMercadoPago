@@ -63,7 +63,7 @@ extension HueMercadoPago: PXLifeCycleProtocol {
 
     func cancelCheckout() -> (() -> Void)? {        
         let pluginResult = CDVPluginResult(
-                status: CDVCommandStatus_OK,
+                status: CDVCommandStatus_ERROR,
                 messageAs: "Cancelled"
             )
         self.commandDelegate!.send(pluginResult, callbackId: self.command?.callbackId);
