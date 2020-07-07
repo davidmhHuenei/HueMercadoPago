@@ -7,7 +7,10 @@ import UIKit
 @objc(HueMercadoPago) class HueMercadoPago : CDVPlugin {
 
     var command: CDVInvokedUrlCommand?
-
+    var navController: UINavigationController?;
+    var publicKey: String = "";
+    var preferenceId: String = "";
+    
     @objc(realizarPago:) // Declare your function name.
     func realizarPago(command: CDVInvokedUrlCommand) { // write the function code.
         /* 
@@ -19,36 +22,37 @@ import UIKit
         // Set the plugin result to succeed.
         //pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "The plugin succeeded");
         // Send the function result back to Cordova.
-        let publicKey = command.arguments[0] as! String
-        let preferenceId = command.arguments[1] as! String
+        self.publicKey = command.arguments[0] as! String
+        self.preferenceId = command.arguments[1] as! String
         self.command = command;
-        self.runMercadoPagoCheckoutWithLifecycle(publicKey: publicKey, preferenceId: preferenceId)
+        self.runMercadoPagoCheckoutWithLifecycle();
     }
 
 
-    func runMercadoPagoCheckoutWithLifecycle(publicKey: String, preferenceId: String) {
+    func runMercadoPagoCheckoutWithLifecycle() {
         // 1) Create Builder with your publicKey and preferenceId.
         let builder = MercadoPagoCheckoutBuilder(publicKey: publicKey, 
         preferenceId: preferenceId).setLanguage("es")
 
         // 2) Create Checkout reference
         let checkout = MercadoPagoCheckout(builder: builder)
-        
         let storyboard: UIStoryboard = UIStoryboard(name: "HomeMP", bundle: nil)
         //let root = UIApplication.shared.keyWindow?.rootViewController
         
-        let navController = storyboard.instantiateViewController(withIdentifier: "HomeMP")
-        self.viewController.present(navController, animated: true)
+        self.navController = storyboard.instantiateViewController(withIdentifier: "HomeMP") as? UINavigationController
+        self.navController!.modalPresentationStyle = .fullScreen
         
+        self.viewController.present(self.navController!, animated: true)
+
         // 3) Start with your navigation controller.
-        checkout.start(navigationController: navController as! UINavigationController, lifeCycleProtocol: self)
+        checkout.start(navigationController: self.navController!, lifeCycleProtocol: self)
     }
 }
 
 // MARK: Optional Lifecycle protocol implementation example.
 extension HueMercadoPago: PXLifeCycleProtocol {
     public func finishCheckout() -> ((_ payment: PXResult?) -> Void)? {
-        self.viewController.dismiss(animated: false)
+        self.navController?.dismiss(animated: false)
         return ({ (_ payment: PXResult?) in
             let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_OK,
@@ -61,20 +65,25 @@ extension HueMercadoPago: PXLifeCycleProtocol {
         })
     }
 
-    func cancelCheckout() -> (() -> Void)? {        
+    func cancelCheckout() -> (() -> Void)? {
         let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_ERROR,
                 messageAs: "Cancelled"
             )
         self.commandDelegate!.send(pluginResult, callbackId: self.command?.callbackId);
-        self.viewController.dismiss(animated: false)
+        self.navController?.dismiss(animated: false)
         return nil
     }
-/*
+
     func changePaymentMethodTapped() -> (() -> Void)? {
         return { () in
+            self.navController?.dismiss(animated: false) {
+                self.runMercadoPagoCheckoutWithLifecycle()
+            }
             print("px - changePaymentMethodTapped")
         }
     }
-*/
+
 }
+
+
