@@ -36,6 +36,8 @@
             </config>
             <pods use-frameworks="true">
                 <pod name="MercadoPagoSDK" spec="~> 4.0" />
+		<pod name="MLCardForm" spec="~> 0.9.1" />
+                <pod name="MLCardDrawer" spec="~> 1.5.1" />
             </pods>
         </podspec>
         <engines>
