@@ -37,7 +37,7 @@
             <pods use-frameworks="true">
                 <pod name="MercadoPagoSDK" spec="~> 4.0" />
             </pods>
-        </podspec>
+        </podspec> 
         <engines>
             <engine name="cordova" version=">=7.0.0" />
             <engine name="cordova-android" version=">=6.3.0" />
